@@ -263,7 +263,7 @@ function _decompress(length, resetValue, getNextValue)
         dictionary[i] = i;
     }
 
-    function _getBits(data, numBits)
+    function _getBits(numBits)
     {
         const maxpower = Math.pow(2, numBits);
         bits = 0;
@@ -281,15 +281,15 @@ function _decompress(length, resetValue, getNextValue)
         return bits;
     }
 
-    _getBits(data, 2);
+    _getBits(2);
 
     switch (next = bits) {
         case 0:
-            _getBits(data, 8);
+            _getBits(8);
             c = f(bits);
             break;
         case 1:
-            _getBits(data, 16);
+            _getBits(16);
             c = f(bits);
             break;
         case 2:
